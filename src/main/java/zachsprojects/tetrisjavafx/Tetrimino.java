@@ -6,6 +6,8 @@ public abstract class Tetrimino {
     public Tetrimino(){
     }
     
-    public abstract int[][] getShape();
+    public int[][] getShape(){
+        return this.shape;
+    };
     
 }

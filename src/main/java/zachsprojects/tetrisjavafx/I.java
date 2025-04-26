@@ -11,8 +11,4 @@ public class I extends Tetrimino{
         };
     }
     
-    @Override
-    public int[][] getShape(){
-        return shape;
-    }
 }
