@@ -1,25 +1,11 @@
 package zachsprojects.tetrisjavafx;
 
-public class Tetrimino {
-    double xPos;
-    double yPos;
+public abstract class Tetrimino {
+    int[][] shape;
     
-    public Tetrimino(Double xPos, Double yPos){
-        this.xPos = xPos;
-        this.yPos = yPos;
+    public Tetrimino(){
     }
     
-    public void setxPos(double xPos){
-        this.xPos = xPos;
-    }
-    public void setyPos(double yPos){
-        this.yPos = yPos;
-    }
+    public abstract int[][] getShape();
     
-    public double getxPos(){
-        return this.xPos;
-    }
-    public double getyPos(){
-        return this.yPos;
-    }
 }

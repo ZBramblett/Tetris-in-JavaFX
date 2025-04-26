@@ -21,7 +21,7 @@ public class GameManager extends AnimationTimer {
     
     }
     Tetrimino tetrimino = new Tetrimino(100.00,100.00);
-    
+    TetrisBoard gameBoard = new TetrisBoard(20,10);
     
     @Override
     public void handle(long l) {
