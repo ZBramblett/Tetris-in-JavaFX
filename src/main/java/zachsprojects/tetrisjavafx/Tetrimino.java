@@ -2,8 +2,8 @@ package zachsprojects.tetrisjavafx;
 
 public abstract class Tetrimino {
     int[][] shape;
-    int currentRow;
-    int currentCol;
+    int currentRow = 0;
+    int currentCol = 0;
     
     public Tetrimino(){
     }

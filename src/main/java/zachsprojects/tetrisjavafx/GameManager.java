@@ -15,7 +15,7 @@ public class GameManager extends AnimationTimer {
     this.canvas = canvas;
     this.graphicsContext = gc;
     
-//    this.canvas.setOnKeyReleased(this::handleKeyPresses);
+    this.canvas.setOnKeyReleased(this::handleKeyPresses);
     
     this.canvas.setFocusTraversable(true);
     
@@ -27,23 +27,25 @@ public class GameManager extends AnimationTimer {
     @Override
     public void handle(long l) {
         // Game loop
+        graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        
         graphicsContext.setFill(Color.BLACK);
         graphicsContext.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
-        
         gameBoard.drawBoard(graphicsContext, 40);
-        gameBoard.addShape(I,3);
-    
+        gameBoard.drawShape(I);
+        
+        
     }
     
-//    private void handleKeyPresses(KeyEvent event) {
-//        switch (event.getCode()) {
-//            case UP: tetrimino.setyPos(tetrimino.getyPos() - 50); break;
-//            case DOWN: tetrimino.setyPos(tetrimino.getyPos() + 50); break;
-//            case LEFT: tetrimino.setxPos(tetrimino.getxPos() - 50); break;
-//            case RIGHT: tetrimino.setxPos(tetrimino.getxPos() + 50); break;
-//            default: break;
-//        }
-//    }
+    private void handleKeyPresses(KeyEvent event) {
+        switch (event.getCode()) {
+            case UP: ; break;
+            case DOWN: gameBoard.removeShape(I); I.setCurrentRow(I.getCurrentRow() + 1); break;
+            case LEFT: gameBoard.removeShape(I); I.setCurrentCol(I.getCurrentRow() - 1); break;
+            case RIGHT: gameBoard.removeShape(I); I.setCurrentCol(I.getCurrentRow() + 1); break;
+            default: break;
+        }
+    }
 
     
 }

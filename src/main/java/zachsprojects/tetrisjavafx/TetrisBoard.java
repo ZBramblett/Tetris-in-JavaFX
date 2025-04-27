@@ -14,22 +14,27 @@ public class TetrisBoard {
         return this.gameBoard;
     }
     
-//    public void addShape(Tetrimino shape){
-//        for (int row = 0; row < shape.getShape().length; row++){
-//            for (int col = 0; col < shape.getShape()[row].length; col++){
-//                if (shape.getShape()[row][col] != 0){
-//                    gameBoard[row][col] = shape.getShape()[row][col];
-//                }
-//            }
-//        }
-//    }
-    
     public void drawShape(Tetrimino shape){
-    
+        for (int row = 0; row < shape.getShape().length; row++){
+            for (int col = 0; col < shape.getShape()[row].length; col++){
+                if (shape.getShape()[row][col] != 0){
+                    gameBoard[row + shape.getCurrentRow()][col + shape.getCurrentCol()] = shape.getShape()[row][col];
+                }
+            }
+        }
     }
     
-    
-    
+    public void removeShape(Tetrimino shape){
+        for (int row = 0; row < shape.getShape().length; row++) {
+            for (int col = 0; col < shape.getShape()[row].length; col++) {
+                if (shape.getShape()[row][col] != 0) {
+                    int boardRow = shape.getCurrentRow() + row;
+                    int boardCol = shape.getCurrentCol() + col;
+                    gameBoard[boardRow][boardCol] = 0;
+                }
+            }
+        }
+    }
     
     
     public void drawBoard(GraphicsContext gc, int cellSize) {
