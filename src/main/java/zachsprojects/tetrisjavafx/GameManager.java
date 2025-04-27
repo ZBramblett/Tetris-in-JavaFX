@@ -22,7 +22,7 @@ public class GameManager extends AnimationTimer {
     }
     
     TetrisBoard gameBoard = new TetrisBoard(20,10);
-    Tetrimino I = new I();
+    Tetrimino T = new T();
     
     @Override
     public void handle(long l) {
@@ -32,7 +32,7 @@ public class GameManager extends AnimationTimer {
         graphicsContext.setFill(Color.BLACK);
         graphicsContext.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
         gameBoard.drawBoard(graphicsContext, 40);
-        gameBoard.drawShape(I);
+        gameBoard.drawShape(T);
         
         
     }
@@ -40,9 +40,9 @@ public class GameManager extends AnimationTimer {
     private void handleKeyPresses(KeyEvent event) {
         switch (event.getCode()) {
             case UP: ; break;
-            case DOWN: gameBoard.removeShape(I); I.setCurrentRow(I.getCurrentRow() + 1); break;
-            case LEFT: gameBoard.removeShape(I); I.setCurrentCol(I.getCurrentRow() - 1); break;
-            case RIGHT: gameBoard.removeShape(I); I.setCurrentCol(I.getCurrentRow() + 1); break;
+            case DOWN: gameBoard.removeShape(T); T.setCurrentRow(T.getCurrentRow() + 1); break;
+            case LEFT: gameBoard.removeShape(T); T.setCurrentCol(T.getCurrentCol() - 1); break;
+            case RIGHT: gameBoard.removeShape(T); T.setCurrentCol(T.getCurrentCol() + 1); break;
             default: break;
         }
     }
