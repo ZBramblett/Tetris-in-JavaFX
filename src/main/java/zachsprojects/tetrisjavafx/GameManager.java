@@ -15,13 +15,14 @@ public class GameManager extends AnimationTimer {
     this.canvas = canvas;
     this.graphicsContext = gc;
     
-    this.canvas.setOnKeyReleased(this::handleKeyPresses);
+//    this.canvas.setOnKeyReleased(this::handleKeyPresses);
     
     this.canvas.setFocusTraversable(true);
     
     }
-    Tetrimino tetrimino = new Tetrimino(100.00,100.00);
+    
     TetrisBoard gameBoard = new TetrisBoard(20,10);
+    Tetrimino I = new I();
     
     @Override
     public void handle(long l) {
@@ -29,20 +30,21 @@ public class GameManager extends AnimationTimer {
         graphicsContext.setFill(Color.BLACK);
         graphicsContext.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
         
-        graphicsContext.setFill(Color.CYAN);
-        graphicsContext.fillOval(tetrimino.getxPos(), tetrimino.getyPos(), 20,20);
+        gameBoard.drawBoard(graphicsContext, 40);
+        gameBoard.addShape(I,3);
     
     }
     
-    private void handleKeyPresses(KeyEvent event) {
-        switch (event.getCode()) {
-            case UP: tetrimino.setyPos(tetrimino.getyPos() - 50); break;
-            case DOWN: tetrimino.setyPos(tetrimino.getyPos() + 50); break;
-            case LEFT: tetrimino.setxPos(tetrimino.getxPos() - 50); break;
-            case RIGHT: tetrimino.setxPos(tetrimino.getxPos() + 50); break;
-            default: break;
-        }
-    }
+//    private void handleKeyPresses(KeyEvent event) {
+//        switch (event.getCode()) {
+//            case UP: tetrimino.setyPos(tetrimino.getyPos() - 50); break;
+//            case DOWN: tetrimino.setyPos(tetrimino.getyPos() + 50); break;
+//            case LEFT: tetrimino.setxPos(tetrimino.getxPos() - 50); break;
+//            case RIGHT: tetrimino.setxPos(tetrimino.getxPos() + 50); break;
+//            default: break;
+//        }
+//    }
+
     
 }
 
