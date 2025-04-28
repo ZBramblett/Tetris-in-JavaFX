@@ -1,7 +1,6 @@
 package zachsprojects.tetrisjavafx;
 
 public class I extends Tetrimino{
-    
     public I(){
         this.shape = new int[][]{
                 {1, 0, 0, 0},
