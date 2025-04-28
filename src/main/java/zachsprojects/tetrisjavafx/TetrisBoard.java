@@ -43,10 +43,10 @@ public class TetrisBoard {
                 int cell = gameBoard[row][col];
                 
                 if (cell != 0) {
-                    gc.setFill(Color.BLUE);
+                    gc.setFill(Color.CYAN);
                     gc.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
                 } else {
-                    gc.setStroke(Color.LIGHTGRAY);
+                    gc.setStroke(Color.BLACK);
                     gc.strokeRect(col * cellSize, row * cellSize, cellSize, cellSize);
                 }
             }

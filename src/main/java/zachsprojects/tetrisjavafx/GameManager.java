@@ -28,7 +28,7 @@ public class GameManager extends AnimationTimer {
     TetrisBoard gameBoard = new TetrisBoard(20, 10);
     Tetrimino T = new T();
     
-    Timeline gravity = new Timeline(new KeyFrame(Duration.millis(250), event -> {
+    Timeline gravity = new Timeline(new KeyFrame(Duration.millis(750), event -> {
         gameBoard.removeShape(T); T.setCurrentRow(T.getCurrentRow() + 1);})
     );
     
@@ -40,7 +40,7 @@ public class GameManager extends AnimationTimer {
         gravity.play();
         graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         
-        graphicsContext.setFill(Color.BLACK);
+        graphicsContext.setFill(Color.LIGHTGRAY);
         graphicsContext.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
         gameBoard.drawBoard(graphicsContext, 40);
         gameBoard.drawShape(T);
