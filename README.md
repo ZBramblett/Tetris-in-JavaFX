@@ -1,0 +1,1 @@
+Tetris remade in JavaFX. This is my repository where I will be working on my remake of Tetris in JavaFX. I have big plans to eventually connect this to an artificial neural network and teach it how to play Tetris! More to come later!
