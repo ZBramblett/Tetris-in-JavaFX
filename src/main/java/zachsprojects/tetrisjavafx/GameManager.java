@@ -9,6 +9,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+/**
+ *  This is the GameManager class, this class is responsible for holding the gameloop as well as instantiation of my objects. It's also where I set up user input.
+ */
+
 public class GameManager extends AnimationTimer {
     
     private GraphicsContext graphicsContext;
@@ -25,16 +29,19 @@ public class GameManager extends AnimationTimer {
     }
     
     TetrisBoard gameBoard = new TetrisBoard(20, 10);
-    Tetrimino T = new T();
+    Tetrimino T = new I();
     
     Timeline gravity = new Timeline(new KeyFrame(Duration.millis(750), event -> {
         gameBoard.removeShape(T); T.setCurrentRow(T.getCurrentRow() + 1);})
     );
     
-    
-    
+    /**
+     * This is the game loop.
+     * @param l I don't know what this is
+     */
     @Override
     public void handle(long l) {
+        
         // Game loop
         gravity.play();
         graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
@@ -44,9 +51,12 @@ public class GameManager extends AnimationTimer {
         gameBoard.drawBoard(graphicsContext, 40);
         gameBoard.drawShape(T);
         
-        
     }
     
+    /**
+     * This is where I get user input to move the pieces around
+     * @param event the event parameter just takes in a key press I think.
+     */
     private void handleKeyPresses(KeyEvent event) {
         switch (event.getCode()) {
             case UP: ; break;
