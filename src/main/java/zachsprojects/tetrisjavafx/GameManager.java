@@ -29,11 +29,11 @@ public class GameManager extends AnimationTimer {
     }
     
     TetrisBoard gameBoard = new TetrisBoard(20, 10);
-    Tetrimino T = new I();
+    Tetrimino T = new T();
     
-    Timeline gravity = new Timeline(new KeyFrame(Duration.millis(750), event -> {
-        gameBoard.removeShape(T); T.setCurrentRow(T.getCurrentRow() + 1);})
-    );
+//    Timeline gravity = new Timeline(new KeyFrame(Duration.millis(750), event -> {
+//        gameBoard.removeShape(T); T.setCurrentRow(T.getCurrentRow() + 1);})
+//    );
     
     /**
      * This is the game loop.
@@ -43,13 +43,13 @@ public class GameManager extends AnimationTimer {
     public void handle(long l) {
         
         // Game loop
-        gravity.play();
+//        gravity.play();
         graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         
         graphicsContext.setFill(Color.LIGHTGRAY);
         graphicsContext.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
         gameBoard.drawBoard(graphicsContext, 40);
-        gameBoard.drawShape(T);
+        gameBoard.drawTetrimino(graphicsContext,T,40);
         
     }
     
@@ -59,10 +59,10 @@ public class GameManager extends AnimationTimer {
      */
     private void handleKeyPresses(KeyEvent event) {
         switch (event.getCode()) {
-            case UP: ; break;
-            case DOWN: gameBoard.removeShape(T); T.setCurrentRow(T.getCurrentRow() + 1); break;
-            case LEFT: gameBoard.removeShape(T); T.setCurrentCol(T.getCurrentCol() - 1); break;
-            case RIGHT: gameBoard.removeShape(T); T.setCurrentCol(T.getCurrentCol() + 1); break;
+            case UP: T.setCurrentRow(T.getCurrentRow() - 1); System.out.println(T.getCurrentCol()) ; System.out.println(T.getCurrentRow()); break;
+            case DOWN: T.setCurrentRow(T.getCurrentRow() + 1); System.out.println(T.getCurrentCol()) ; System.out.println(T.getCurrentRow()); break;
+            case LEFT: T.setCurrentCol(T.getCurrentCol() - 1);System.out.println(T.getCurrentCol()) ; System.out.println(T.getCurrentRow()); break;
+            case RIGHT: T.setCurrentCol(T.getCurrentCol() + 1);System.out.println(T.getCurrentCol()) ; System.out.println(T.getCurrentRow()); break;
             default: break;
         }
     }

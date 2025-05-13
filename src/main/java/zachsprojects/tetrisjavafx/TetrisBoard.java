@@ -21,26 +21,31 @@ public class TetrisBoard {
     public int[][] getGameBoard(){
         return this.gameBoard;
     }
-    
+
     /**
      * Draw shape method loops through the 2D array of a given shape and then sets the gameboard 2D array to it in order to draw the correct shapes.
      * @param shape takes in a tetrimino piece so it can draw the correct shape.
      */
-    public void drawShape(Tetrimino shape){
-        for (int row = 0; row < shape.getShape().length; row++){
-            for (int col = 0; col < shape.getShape()[row].length; col++){
-                if (shape.getShape()[row][col] != 0){
-                    gameBoard[row + shape.getCurrentRow()][col + shape.getCurrentCol()] = shape.getShape()[row][col];
+    public void drawShapeToBoard(Tetrimino shape){
+        int[][] shapeMatrix = shape.getShape();
+        int offsetRow = shape.getCurrentRow();
+        int offsetCol = shape.getCurrentCol();
+
+        for (int row = 0; row < shapeMatrix.length; row++){
+            for (int col = 0; col < shapeMatrix[row].length; col++){
+                int isShapeHere = shapeMatrix[row][col];
+                if (isShapeHere != 0){
+                    gameBoard[row + offsetRow][col + offsetCol] = isShapeHere;
                 }
             }
         }
     }
-    
+
     /**
      * removeShape will loop through a shapes array and then change that spot to 0's in order for the game board to know to not draw a shape in that spot anymore. I need this so that I'm moving the shapes and not just painting the board 1 color.
      * @param shape takes in a tetrimino as an argument in order to know what the shape looks like
      */
-    public void removeShape(Tetrimino shape){
+    public void removeShapeFromBoard(Tetrimino shape){
         for (int row = 0; row < shape.getShape().length; row++) {
             for (int col = 0; col < shape.getShape()[row].length; col++) {
                 if (shape.getShape()[row][col] != 0) {
@@ -51,7 +56,7 @@ public class TetrisBoard {
             }
         }
     }
-    
+
     /**
      * drawBoard loops through the 2D array and will check to see if there is a 0 or a 1 and then draw the correct color.
      * @param gc this takes in a graphics context object
@@ -72,4 +77,25 @@ public class TetrisBoard {
             }
         }
     }
+
+    public void drawTetrimino(GraphicsContext gc, Tetrimino shape, int cellSize) {
+        int[][] shapeMatrix = shape.getShape();
+        int startingRow = shape.getCurrentRow();
+        int startingCol = shape.getCurrentCol();
+
+        for (int row = 0; row < shapeMatrix.length; row++) {
+            for (int col = 0; col < shapeMatrix[row].length; col++) {
+                if (shapeMatrix[row][col] != 0) {
+                    gc.setFill(Color.CYAN);
+                    gc.fillRect((startingCol + col) * cellSize, (startingRow + row) * cellSize, cellSize, cellSize);
+                }
+            }
+        }
+
+    }
+
+
+
 }
+
+
