@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 
 public class TetrisBoard {
     int[][] gameBoard;
+    ColorPicker colorPicker = new ColorPicker();
     
     public TetrisBoard(Integer row, Integer column){
         gameBoard = new int[row][column];
@@ -68,7 +69,7 @@ public class TetrisBoard {
                 int cell = gameBoard[row][col];
                 
                 if (cell != 0) {
-                    gc.setFill(shape.getColor());
+                    gc.setFill(colorPicker.pickColor(cell));
                     gc.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
                 } else {
                     gc.setStroke(Color.BLACK);
