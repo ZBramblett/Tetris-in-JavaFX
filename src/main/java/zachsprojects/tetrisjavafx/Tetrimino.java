@@ -1,5 +1,8 @@
 package zachsprojects.tetrisjavafx;
 
+
+import javafx.scene.paint.Color;
+
 /**
  * This is the abstract class for the tetris pieces, it acts as a blue print for all the other pieces.
  */
@@ -8,6 +11,8 @@ public abstract class Tetrimino {
     int[][] shape;
     int currentRow = 0;
     int currentCol = 0;
+    Color color;
+
     
     /**
      * default constructor that is going to be different for each piece
@@ -52,6 +57,10 @@ public abstract class Tetrimino {
      */
     public int getCurrentCol(){
         return currentCol;
+    }
+
+    public Color getColor(){
+        return this.color;
     }
 
     /**

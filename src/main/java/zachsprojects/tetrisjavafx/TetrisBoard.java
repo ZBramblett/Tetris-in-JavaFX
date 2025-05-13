@@ -62,13 +62,13 @@ public class TetrisBoard {
      * @param gc this takes in a graphics context object
      * @param cellSize this just lets me adjust how many pixels each cell is.
      */
-    public void drawBoard(GraphicsContext gc, int cellSize) {
+    public void drawBoard(GraphicsContext gc, int cellSize, Tetrimino shape) {
         for (int row = 0; row < gameBoard.length; row++) {
             for (int col = 0; col < gameBoard[row].length; col++) {
                 int cell = gameBoard[row][col];
                 
                 if (cell != 0) {
-                    gc.setFill(Color.CYAN);
+                    gc.setFill(shape.getColor());
                     gc.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
                 } else {
                     gc.setStroke(Color.BLACK);
@@ -86,7 +86,7 @@ public class TetrisBoard {
         for (int row = 0; row < shapeMatrix.length; row++) {
             for (int col = 0; col < shapeMatrix[row].length; col++) {
                 if (shapeMatrix[row][col] != 0) {
-                    gc.setFill(Color.CYAN);
+                    gc.setFill(shape.getColor());
                     gc.fillRect((startingCol + col) * cellSize, (startingRow + row) * cellSize, cellSize, cellSize);
                 }
             }

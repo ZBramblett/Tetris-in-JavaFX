@@ -1,5 +1,7 @@
 package zachsprojects.tetrisjavafx;
 
+import javafx.scene.paint.Color;
+
 public class Z extends Tetrimino{
     public Z(){
         this.shape = new int[][]{
@@ -8,5 +10,6 @@ public class Z extends Tetrimino{
                 {0, 0, 0, 0},
                 {0, 0, 0, 0}
         };
+        this.color = Color.RED;
     }
 }
