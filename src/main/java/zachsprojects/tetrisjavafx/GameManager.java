@@ -33,10 +33,15 @@ public class GameManager extends AnimationTimer {
     TetrisBoard gameBoard = new TetrisBoard(20, 10);
     Tetrimino T = new T();
     
-//    Timeline gravity = new Timeline(new KeyFrame(Duration.millis(750), event -> {
-//        gameBoard.removeShape(T); T.setCurrentRow(T.getCurrentRow() + 1);})
-//    );
-    
+    Timeline gravity = new Timeline(new KeyFrame(Duration.millis(750), event -> {
+        if (gameBoard.canMove(T, +1, 0, gameBoard.getGameBoard())) {
+            T.moveShapeDown();
+        }else{
+            gameBoard.drawShapeToBoard(T);
+        }
+    }));
+
+
     /**
      * This is the game loop.
      * @param l I don't know what this is
@@ -45,7 +50,7 @@ public class GameManager extends AnimationTimer {
     public void handle(long l) {
         
         // Game loop
-//        gravity.play();
+        gravity.play();
         graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         
         graphicsContext.setFill(Color.LIGHTGRAY);
