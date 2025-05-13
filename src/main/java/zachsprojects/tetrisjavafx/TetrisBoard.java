@@ -91,7 +91,32 @@ public class TetrisBoard {
                 }
             }
         }
+    }
 
+    public boolean canMove(Tetrimino shape, int desiredRow, int desiredCol, int[][] gameboard){
+        int[][] shapeShape = shape.getShape();
+        int destinationRow = shape.getCurrentRow() + desiredRow;
+        int destinationCol = shape.getCurrentCol() + desiredCol;
+
+        for (int row = 0; row < shapeShape.length; row++){
+            for(int col = 0; col < shapeShape[row].length; col++){
+                if (shapeShape[row][col] != 0){
+                    int boardRow = destinationRow + row;
+                    int boardCol = destinationCol + col;
+
+                    if (boardRow < 0 || boardRow >= gameboard.length ||
+                            boardCol < 0 || boardCol >= gameboard[0].length){
+                        return false;
+                    }
+                    if (gameboard[boardRow][boardCol] != 0 ){
+                        return false;
+                    }
+                }
+
+
+            }
+        }
+        return true;
     }
 
 

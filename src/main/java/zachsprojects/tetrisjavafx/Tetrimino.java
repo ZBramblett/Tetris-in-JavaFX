@@ -22,6 +22,21 @@ public abstract class Tetrimino {
     public int[][] getShape(){
         return this.shape;
     };
+
+
+    public void moveShapeLeft(){
+        this.currentCol = this.currentCol - 1;
+    }
+    public void moveShapeRight(){
+        this.currentCol = this.currentCol + 1;
+
+    }
+    public void moveShapeDown(){
+        this.currentRow = this.currentRow + 1;
+    }
+    public void moveShapeUp(){
+        this.currentRow = this.currentRow - 1;
+    }
     
     /**
      * basic getter for the row position
@@ -38,7 +53,7 @@ public abstract class Tetrimino {
     public int getCurrentCol(){
         return currentCol;
     }
-    
+
     /**
      * Setter for the row in order to move the pieces around
      * @param currentRow
