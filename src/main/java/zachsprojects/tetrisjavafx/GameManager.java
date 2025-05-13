@@ -82,6 +82,8 @@ public class GameManager extends AnimationTimer {
         if (event.getCode() == DOWN){
             if(gameBoard.canMove(T, +1,0, gameBoard.getGameBoard())){
                 T.moveShapeDown();
+            }else{
+                gameBoard.drawShapeToBoard(T);
             }
         }
 
