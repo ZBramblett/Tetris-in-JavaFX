@@ -31,13 +31,15 @@ public class GameManager extends AnimationTimer {
     }
     
     TetrisBoard gameBoard = new TetrisBoard(20, 10);
-    Tetrimino T = new T();
+    ShapeGenerator shapeGenerator = new ShapeGenerator();
+    Tetrimino currentShape = shapeGenerator.pickRandomShape();
     
     Timeline gravity = new Timeline(new KeyFrame(Duration.millis(750), event -> {
-        if (gameBoard.canMove(T, +1, 0, gameBoard.getGameBoard())) {
-            T.moveShapeDown();
+        if (gameBoard.canMove(currentShape, +1, 0, gameBoard.getGameBoard())) {
+            currentShape.moveShapeDown();
         }else{
-            gameBoard.drawShapeToBoard(T);
+            gameBoard.drawShapeToBoard(currentShape);
+            currentShape = shapeGenerator.pickRandomShape();
         }
     }));
 
@@ -56,39 +58,27 @@ public class GameManager extends AnimationTimer {
         graphicsContext.setFill(Color.LIGHTGRAY);
         graphicsContext.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
         gameBoard.drawBoard(graphicsContext, 40);
-        gameBoard.drawTetrimino(graphicsContext,T,40);
+        gameBoard.drawTetrimino(graphicsContext,currentShape,40);
         
     }
-    
-    /**
-     * This is where I get user input to move the pieces around
-     * @param event the event parameter just takes in a key press I think.
-     */
-//    private void handleKeyPresses(KeyEvent event) {
-//        switch (event.getCode()) {
-//            case UP: T.moveShapeUp(); System.out.println(T.getCurrentCol()) ; System.out.println(T.getCurrentRow()); break;
-//            case DOWN: T.moveShapeDown(); System.out.println(T.getCurrentCol()) ; System.out.println(T.getCurrentRow()); break;
-//            case LEFT: T.moveShapeLeft();System.out.println(T.getCurrentCol()) ; System.out.println(T.getCurrentRow()); break;
-//            case RIGHT: T.moveShapeRight();System.out.println(T.getCurrentCol()) ; System.out.println(T.getCurrentRow()); break;
-//            default: break;
-//        }
-//    }
+
     private void handleKeyPresses(KeyEvent event){
         if (event.getCode() == LEFT){
-            if(gameBoard.canMove(T, 0,-1, gameBoard.getGameBoard())){
-                T.moveShapeLeft();
+            if(gameBoard.canMove(currentShape, 0,-1, gameBoard.getGameBoard())){
+                currentShape.moveShapeLeft();
             }
         }
         if (event.getCode() == RIGHT){
-            if(gameBoard.canMove(T, 0,+1, gameBoard.getGameBoard())){
-                T.moveShapeRight();
+            if(gameBoard.canMove(currentShape, 0,+1, gameBoard.getGameBoard())){
+                currentShape.moveShapeRight();
             }
         }
         if (event.getCode() == DOWN){
-            if(gameBoard.canMove(T, +1,0, gameBoard.getGameBoard())){
-                T.moveShapeDown();
+            if(gameBoard.canMove(currentShape, +1,0, gameBoard.getGameBoard())){
+                currentShape.moveShapeDown();
             }else{
-                gameBoard.drawShapeToBoard(T);
+                gameBoard.drawShapeToBoard(currentShape);
+                currentShape = shapeGenerator.pickRandomShape();
             }
         }
 
