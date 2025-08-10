@@ -59,6 +59,7 @@ public class GameManager extends AnimationTimer {
         graphicsContext.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
         gameBoard.drawBoard(graphicsContext, 40, currentShape);
         gameBoard.drawTetrimino(graphicsContext,currentShape,40);
+        gameBoard.clearLines();
         
     }
 
@@ -80,6 +81,9 @@ public class GameManager extends AnimationTimer {
                 gameBoard.drawShapeToBoard(currentShape);
                 currentShape = shapeGenerator.pickRandomShape();
             }
+        }
+        if (event.getCode() == UP){
+            gameBoard.rotateShape(currentShape);
         }
 
     }

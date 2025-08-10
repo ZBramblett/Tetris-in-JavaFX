@@ -6,7 +6,7 @@ public class ShapeGenerator {
 
     public Tetrimino pickRandomShape(){
         Random random = new Random();
-        int randomShape = random.nextInt(1,7);
+        int randomShape = random.nextInt(1,8);
         switch (randomShape){
             case 1:
                 return new I();
