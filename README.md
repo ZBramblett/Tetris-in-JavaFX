@@ -62,8 +62,6 @@ mvn javafx:run
 | ← / →          | Move piece left/right |
 | ↓              | Soft drop           |
 | ↑              | Rotate piece        |
-| Space          | Hard drop           |
-| P              | Pause / resume      |
 
 *(Update this table if your actual key bindings differ.)*
 
